@@ -52,15 +52,9 @@ public class TextBoxTests {
         $(byText("Submit")).click();
 
         SelenideElement modalBody = $(".modal-body");
-        modalBody.shouldHave(text("Andrey Zaytsev"));
-        modalBody.shouldHave(text("test@example.com"));
-        modalBody.shouldHave(text("Male"));
-        modalBody.shouldHave(text("9100000000"));
-        modalBody.shouldHave(text("01 October,2000"));
-        modalBody.shouldHave(text("English, Computer Science, Maths"));
-        modalBody.shouldHave(text("Sports, Reading, Music"));
-        modalBody.shouldHave(text("test_file.png"));
-        modalBody.shouldHave(text("Kaluga"));
-        modalBody.shouldHave(text("NCR Noida"));
+        modalBody.shouldHave(text("Andrey Zaytsev"), text("test@example.com"), text("Male"), text("9100000000"),
+                text("01 October,2000"), text("English, Computer Science, Maths"), text("Sports, Reading, Music"),
+                text("test_file.png"), text("Kaluga"), text("NCR Noida"));
+
     }
 }
