@@ -1,60 +1,60 @@
 package com.demoqa.tests;
+import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPage;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.demoqa.tests.TestData.*;
-import static java.lang.String.format;
 
-
-public class RegistrationFormTests extends TestBase{
+public class RegistrationFormTests extends TestBase {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
-
-
-
-
-
+    @BeforeAll
+    static void configure() {
+        Configuration.holdBrowserOpen = true;
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+    }
     @Test
     void fillFormTest() {
         registrationFormPage.openPage()
-        .setFirstName(firstName)
-        .setLastName(lastName)
-        .setEmail(email)
-        .setGender(gender)
-        .setNumber(number)
-        .setBirthDate(year, month, day)
-        .setUserSubjects(userSubject1, userSubject2, userSubject3)
-        .setHobbies(hobbies1, hobbies2)
-        .setUploadFile(uploadFile)
-        .setCurrentAddress(currentAddress)
-        .setStateAndCity(state, city)
+        .setFirstName("Andrey")
+        .setLastName("Zaytsev")
+        .setEmail("test@example.com")
+        .setGender("Male")
+        .setNumber("9100000000")
+        .setBirthDate("2000", "Oct", "01")
+        .setUserSubjects("Math", "English", "Computer Science")
+        .setHobbies("Sports", "Reading")
+        .setUploadFile("src/test/resources/test_file.png")
+        .setCurrentAddress("Kaluga")
+        .setStateAndCity("NCR", "Noida")
         .pressSubmit();
 
          registrationFormPage.checkResultsTableVisible()
-            .checkResult("Student Name", expectedFullName)
-            .checkResult("Student Email", email)
-            .checkResult("Gender", gender)
-            .checkResult("Mobile", number)
-            .checkResult("Date of Birth", expectedDateOfBirth)
-            .checkResult("Subjects", userSubject1 + " " + userSubject2 + " " + userSubject3)
+            .checkResult("Student Name", "Andrey Zaytsev")
+            .checkResult("Student Email", "test@example.com")
+            .checkResult("Gender", "Male")
+            .checkResult("Mobile", "9100000000")
+            .checkResult("Date of Birth", "01 October,2000")
+            .checkResult("Subjects", "Maths, English, Computer Science")
             .checkResult("Hobbies", "Sports, Reading")
-            .checkResult("Picture", uploadFile)
-            .checkResult("Address", currentAddress)
-            .checkResult("State and City", state + " " + city);
+            .checkResult("Picture", "test_file.png")
+            .checkResult("Address", "Kaluga")
+            .checkResult("State and City", "NCR Noida");
 
     }    @Test
     void fillFormWithMinimumDataTest() {
         registrationFormPage.openPage()
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setGender(gender)
-                .setNumber(number)
+                .setFirstName("Andrey")
+                .setLastName("Zaytsev")
+                .setGender("Male")
+                .setNumber("9100000000")
                 .pressSubmit();
 
         registrationFormPage.checkResultsTableVisible()
-                .checkResult("Student Name", expectedFullName)
-                .checkResult("Gender", gender)
-                .checkResult("Mobile", number);
+                .checkResult("Student Name", "Andrey Zaytsev")
+                .checkResult("Gender", "Male")
+                .checkResult("Mobile", "9100000000");
 
     }
 }

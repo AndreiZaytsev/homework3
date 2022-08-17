@@ -19,8 +19,7 @@ public class ResultsTableComponent {
     }
 
     public ResultsTableComponent checkResult(String key, String value) {
-        $(".table-responsive table").$(byText(key))
-                .parent().shouldHave(text(value));
+        $(".table-responsive table").$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
 }
