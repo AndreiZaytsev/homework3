@@ -17,7 +17,7 @@ public class TextBoxTests extends TestBase {
 
     @BeforeAll
     static void configure() {
-        Configuration.holdBrowserOpen = true;
+//        Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
 //        Configuration.timeout = 10000; // 10 seconds
 //        Configuration.browser = "opera";
