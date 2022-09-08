@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 
 import static com.demoqa.utils.RandomUtils.*;
+import static io.qameta.allure.Allure.step;
 import static java.lang.String.format;
 
 
@@ -59,8 +60,11 @@ public class RegistrationFormWithRandomUnitsTests extends TestBase{
 
     @Test
     void fillFormTest() {
-        registrationFormPage.openPage()
-        .setFirstName(firstName)
+        step("Open registration form ", () -> {
+        registrationFormPage.openPage();
+        });
+        step("Fill form", () -> {
+        registrationFormPage.setFirstName(firstName)
         .setLastName(lastName)
         .setEmail(email)
         .setGender(gender)
@@ -72,7 +76,8 @@ public class RegistrationFormWithRandomUnitsTests extends TestBase{
         .setCurrentAddress(currentAddress)
         .setStateAndCity(state, city)
         .pressSubmit();
-
+        });
+        step("Check form results", () -> {
          registrationFormPage.checkResultsTableVisible()
             .checkResult("Student Name", expectedFullName)
             .checkResult("Student Email", email)
@@ -84,20 +89,27 @@ public class RegistrationFormWithRandomUnitsTests extends TestBase{
             .checkResult("Picture", uploadFile)
             .checkResult("Address", currentAddress)
             .checkResult("State and City", state + " " + city);
+        });
 
-    }    @Test
+    }
+
+    @Test
     void fillFormWithMinimumDataTest() {
-        registrationFormPage.openPage()
-                .setFirstName(firstName)
+        step("Open registration form ", () -> {
+        registrationFormPage.openPage();
+        });
+        step("Fill form", () -> {
+        registrationFormPage.setFirstName(firstName)
                 .setLastName(lastName)
                 .setGender(gender)
                 .setNumber(number)
                 .pressSubmit();
-
+        });
+        step("Check form results", () -> {
         registrationFormPage.checkResultsTableVisible()
                 .checkResult("Student Name", expectedFullName)
                 .checkResult("Gender", gender)
                 .checkResult("Mobile", number);
-
+        });
     }
 }
