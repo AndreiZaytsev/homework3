@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
+import static com.demoqa.tests.TestData.*;
 import static com.demoqa.utils.RandomUtils.*;
 import static io.qameta.allure.Allure.step;
 import static java.lang.String.format;
@@ -25,7 +26,7 @@ public class RegistrationFormWithRandomUnitsTests extends TestBase{
             userSubject1,
             userSubject2,
             userSubject3,
-            expectedSubjects =  format("%s, %s, %s", userSubject1, userSubject2, userSubject3),
+            expectedSubjects = format("%s, %s, %s", userSubject1, userSubject2, userSubject3),
             hobbies1,
             hobbies2,
             uploadFile,
@@ -45,13 +46,13 @@ public class RegistrationFormWithRandomUnitsTests extends TestBase{
         email = getRandomEmail();
         gender = "Male";
         number = getRandomPhone();
-        userSubject1 = "Math";
+        userSubject1 = "Maths";
         userSubject2 = "English";
         userSubject3 = "Computer Science";
         expectedSubjects =  format("%s, %s, %s", userSubject1, userSubject2, userSubject3);
         hobbies1 = "Sports";
         hobbies2 = "Reading";
-        uploadFile = "src/test/resources/test_file.png";
+        uploadFile = "Picture test_file.png";
         currentAddress = "Kaluga";
         state  = "NCR";
         city = "Noida";
@@ -79,16 +80,16 @@ public class RegistrationFormWithRandomUnitsTests extends TestBase{
         });
         step("Check form results", () -> {
          registrationFormPage.checkResultsTableVisible()
-            .checkResult("Student Name", expectedFullName)
-            .checkResult("Student Email", email)
-            .checkResult("Gender", gender)
-            .checkResult("Mobile", number)
-            .checkResult("Date of Birth", expectedDateOfBirth)
-            .checkResult("Subjects", userSubject1 + ", " + userSubject2 + ", " + userSubject3)
-            .checkResult("Hobbies", "Sports, Reading")
-            .checkResult("Picture", uploadFile)
-            .checkResult("Address", currentAddress)
-            .checkResult("State and City", state + " " + city);
+                 .checkResult("Student Name", expectedFullName)
+                 .checkResult("Student Email", email)
+                 .checkResult("Gender", gender)
+                 .checkResult("Mobile", number)
+                 .checkResult("Date of Birth", expectedDateOfBirth)
+                 .checkResult("Subjects", expectedSubjects)
+                 .checkResult("Hobbies", "Sports, Reading")
+                 .checkResult("Picture", uploadFile)
+                 .checkResult("Address", currentAddress)
+                 .checkResult("State and City", state + " " + city);
         });
 
     }
