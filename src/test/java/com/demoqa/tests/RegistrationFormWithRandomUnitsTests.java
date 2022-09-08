@@ -84,7 +84,7 @@ public class RegistrationFormWithRandomUnitsTests extends TestBase{
             .checkResult("Gender", gender)
             .checkResult("Mobile", number)
             .checkResult("Date of Birth", expectedDateOfBirth)
-            .checkResult("Subjects", userSubject1 + " " + userSubject2 + " " + userSubject3)
+            .checkResult("Subjects", userSubject1 + ", " + userSubject2 + ", " + userSubject3)
             .checkResult("Hobbies", "Sports, Reading")
             .checkResult("Picture", uploadFile)
             .checkResult("Address", currentAddress)
