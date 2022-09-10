@@ -1,5 +1,6 @@
 package com.demoqa.pages;
 import com.codeborne.selenide.SelenideElement;
+import com.demoqa.elements.Button;
 import com.demoqa.pages.components.*;
 import java.io.File;
 import static com.codeborne.selenide.Condition.text;
@@ -20,8 +21,8 @@ public class RegistrationFormPage {
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
             uploadPicture = $("#uploadPicture"),
-            currentAddressInput = $("#currentAddress"),
-            submit = $(byText("Submit"));
+            currentAddressInput = $("#currentAddress");
+            Button submit = new Button("Submit", $(byText("Submit")));
 
     private final static String TITLE_TEXT = "Student Registration Form";
 
