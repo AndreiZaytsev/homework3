@@ -68,7 +68,7 @@ task full_test(type: Test) {
     }
 }
 
-task full_test(type: Test) {
+task minimal_test(type: Test) {
     useJUnitPlatform{
         includeTags "minimalTest"
     }
