@@ -1,8 +1,7 @@
 package com.demoqa.tests;
 import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPage;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 
 public class RegistrationFormTests extends TestBase {
@@ -14,6 +13,9 @@ public class RegistrationFormTests extends TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
     }
+    @Disabled
+    @DisplayName("Отправляется форма заполеннная случайными данными")
+    @Tag("fullTest")
     @Test
     void fillFormTest() {
         registrationFormPage.openPage()
@@ -42,7 +44,12 @@ public class RegistrationFormTests extends TestBase {
                 .checkResult("Address", "Kaluga")
                 .checkResult("State and City", "NCR Noida");
 
-    }    @Test
+
+
+    }
+    @DisplayName("Отправляется форма заполненная минимальным количеством данных")
+    @Tag("minimalTest")
+    @Test
     void fillFormWithMinimumDataTest() {
         registrationFormPage.openPage()
                 .setFirstName("Andrey")
