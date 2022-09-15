@@ -1,6 +1,5 @@
 package com.demoqa.pages;
 import com.codeborne.selenide.SelenideElement;
-import com.demoqa.elements.Button;
 import com.demoqa.pages.components.*;
 import java.io.File;
 import static com.codeborne.selenide.Condition.text;
@@ -21,8 +20,8 @@ public class RegistrationFormPage {
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
             uploadPicture = $("#uploadPicture"),
-            currentAddressInput = $("#currentAddress");
-            Button submit = new Button("Submit", $(byText("Submit")));
+            currentAddressInput = $("#currentAddress"),
+            submit = $(byText("Submit"));
 
     private final static String TITLE_TEXT = "Student Registration Form";
 
@@ -109,17 +108,17 @@ public class RegistrationFormPage {
         return this;
     }
 
-        public RegistrationFormPage checkResultsTableVisible () {
-            resultTableComponent.checkVisible();
+    public RegistrationFormPage checkResultsTableVisible () {
+        resultTableComponent.checkVisible();
 
-            return this;
+        return this;
     }
 
     public RegistrationFormPage checkResult (String key, String value){
-            resultTableComponent.checkResult(key, value);
+        resultTableComponent.checkResult(key, value);
 
         return this;
     }
 
 
-    }
+}
