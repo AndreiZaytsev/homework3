@@ -16,4 +16,10 @@ public class SystemPropertiesTests {
         System.out.println(browserVersion);
         System.out.println(browserSize);
     }
+
+    @Test
+    @Tag("hello")
+    void simplePropertyTes5() {
+        System.out.println("Hello, " + System.getProperty("some_text", "qa.guru"));
+    }
 }
